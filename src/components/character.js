@@ -1,9 +1,8 @@
 import React from "react"
 import {Link, useNavigate} from 'react-router-dom'
+import '../styles/char.css'
 
-const nameStyle = {
-  color: '#006643',
-}
+
 
 const Character = ({character, deleteCharacter}) => {
   const navigate = useNavigate()
@@ -14,17 +13,20 @@ const Character = ({character, deleteCharacter}) => {
     navigate('/')
   }
   return (
-    <div>
-      <img src={character.image} alt={character.name} style={{ width: 100, height: 100, borderRadius: '50%' }} />
+
+    <div className='mt-10 border-2 border-black w-28 h-30'>
+      <img className= 'w-26 h-29' src={character.image} alt={character.name} />
       <Link to={`/characters/${character.id}`}>
-        <h1 style={nameStyle}>{character.name}</h1>
+        <h1 className="text-green-600 underline">{character.name}</h1>
       </Link>
      
 
-      <form onSubmit={handleDelete}>
+      <form  className='border-2 border-black border-b-0 bg-red-500'onSubmit={handleDelete}>
         <input type='submit' value='Delete' />
       </form>
+
     </div>
+
   )
 }
 

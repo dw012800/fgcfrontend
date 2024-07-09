@@ -1,4 +1,4 @@
-import './App.css';
+import './styles/App.css';
 //import components
 import AllCharacters from './pages/allCharacters'
 import SingleCharacter from './pages/singleCharacter';
@@ -10,7 +10,7 @@ import { Route, Routes } from 'react-router-dom'
 
 function App() {
   //our API URL
-  const apiURL = 'http://localhost:8000/'
+  const apiURL = 'http://localhost:8000'
   
   const [characters, setCharacters] = useState([]);
 
@@ -22,27 +22,55 @@ function App() {
     setCharacters(data)
   }
 
+  // const handleFormSubmission = async (data, type) => {
+  //   if(type === 'new') { 
+  //     await fetch(`${apiURL}/characters/`, {
+  //       method: 'post', 
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(data)
+  //     })
+  //     getCharacters()
+  //   } else if (type !== 'new'){
+  //     await fetch(`${apiURL}/characters/${data.id}/`, {
+  //       method: 'put',
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(data)
+  //     })
+  //     getCharacters()
+  //   }
+  // }
   const handleFormSubmission = async (data, type) => {
-    if(type === 'new') { 
-      await fetch(`${apiURL}/characters/`, {
-        method: 'post', 
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data)
-      })
-      getCharacters()
-    } else {
-      await fetch(`${apiURL}/characters/${data.id}/`, {
-        method: 'put',
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data)
-      })
-      getCharacters()
+    try {
+      if (type === 'new') { 
+        await fetch(`${apiURL}/characters/`, {
+          method: 'post', 
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data)
+        });
+        getCharacters();
+      } else if (type !== 'new' && data.id) { // Ensure data.id is defined
+        await fetch(`${apiURL}/characters/${data.id}/`, {
+          method: 'put',
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data)
+        });
+        getCharacters();
+      } else {
+        console.error('Invalid data.id:', data.id);
+      }
+    } catch (error) {
+      console.error('Error during form submission:', error);
     }
   }
+  
 
   const deleteCharacter = async (id) => {
     await fetch(`${apiURL}/characters/${id}/`,
@@ -58,8 +86,8 @@ function App() {
   }, [])
 
   return (
-    <div className="App">
-      <h1>Characters</h1>
+    <div class="App">
+      <h1 className='text-6xl'>Tekken 7 Characters</h1>
       <Routes>
       <Route
           exact 
@@ -74,7 +102,7 @@ function App() {
         <Route
           exact
           path = '/new'
-          element={<Form characters={characters} handlesubmit={handleFormSubmission} buttonLabel='Add Character' formType='new'/>}
+          element={<Form characters={characters} handleSubmit={handleFormSubmission} buttonLabel='Add Character' formType='new'/>}
         />
         <Route
           exact 

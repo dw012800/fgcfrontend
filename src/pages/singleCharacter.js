@@ -57,6 +57,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
+// import '../styles/singleChar.css'
 
 console.log('page opened')
 const apiURL= `http://localhost:8000`
@@ -74,7 +75,7 @@ const SingleCharacter = ({ characters }) => {
     // Fetch moves based on character_name
     const fetchMoves = async () => {
       try {
-        const movesResponse = await axios.get(`${apiURL}/moves/character/${foundCharacter.name}/`);
+        const movesResponse = await axios.get(`${apiURL}/moves/character/${foundCharacter.name}`);
         setMoves(movesResponse.data);
       } catch (error) {
         console.error('Error fetching moves:', error);
