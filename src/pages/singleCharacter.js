@@ -92,21 +92,21 @@ const SingleCharacter = ({ characters }) => {
   }
 
   return (
-    <div>
+    <div className='flex flex-col items-center'>
       <img src={`${currentCharacter.image}`} alt={currentCharacter.name} style={{ maxWidth: '100%', height: 'auto' }} />
-      <h1>{currentCharacter.name}</h1>
+      <h1 className='underline'>{currentCharacter.name}</h1>
       <h2>{currentCharacter.details}</h2>
-      <h3>Moves:</h3>
+      <h3 className='underlined'>Moves:</h3>
       <ul>
         {moves.map(move => (
           <li key={move.id}>Command: {move.command}, Hitlevel:{move.hitlevel}, Damage:{move.damage}, Startup:{move.startup}, Block:{move.block}, Hit:{move.hit}, Counterhit:{move.counterhit}</li>
         ))}
       </ul>
       <Link to={`/edit/${params.id}`}>
-        <button>Edit Character</button>
+        <button className='border-2 border-black mt-2'>Edit Character</button>
       </Link>
       <Link to="/">
-        <button>Go Back</button>
+        <button className='border-2 border-black mt-2'>Go Back</button>
       </Link>
     </div>
   );
