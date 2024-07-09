@@ -4,7 +4,7 @@ import AllCharacters from './pages/allCharacters'
 import SingleCharacter from './pages/singleCharacter';
 import Form from './pages/Form';
 //import hooks
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 //import components from React Router
 import { Route, Routes } from 'react-router-dom'
 
@@ -15,12 +15,23 @@ function App() {
   const [characters, setCharacters] = useState([]);
 
   //functions
-  const getCharacters = async() => {
-    const response = await fetch(apiURL + '/characters/')
-    const data = await response.json()
-    console.log(data)
-    setCharacters(data)
-  }
+  // const getCharacters = async() => {
+  //   const response = await fetch(apiURL + '/characters/')
+  //   const data = await response.json()
+  //   console.log(data)
+  //   setCharacters(data)
+  // }
+  const getCharacters = useCallback(async () => {
+    try {
+      const response = await fetch(apiURL + '/characters/');
+      const data = await response.json();
+      console.log(data);
+      setCharacters(data);
+    } catch (error) {
+      console.error('Error fetching characters:', error);
+    }
+  }, [apiURL]);
+  
 
   // const handleFormSubmission = async (data, type) => {
   //   if(type === 'new') { 
