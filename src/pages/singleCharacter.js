@@ -96,7 +96,7 @@ const SingleCharacter = ({ characters }) => {
       <img src={`${currentCharacter.image}`} alt={currentCharacter.name} style={{ maxWidth: '100%', height: 'auto' }} />
       <h1 className='underline'>{currentCharacter.name}</h1>
       <h2>{currentCharacter.details}</h2>
-      <h3 className='underlined'>Moves:</h3>
+      <h2 className='mt-2 underline'>Moves:</h2>
       <ul>
         {moves.map(move => (
           <li key={move.id}>Command: {move.command}, Hitlevel:{move.hitlevel}, Damage:{move.damage}, Startup:{move.startup}, Block:{move.block}, Hit:{move.hit}, Counterhit:{move.counterhit}</li>
