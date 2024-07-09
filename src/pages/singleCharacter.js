@@ -60,7 +60,7 @@ import axios from 'axios';
 // import '../styles/singleChar.css'
 
 console.log('page opened')
-const apiURL= `http://localhost:8000`
+const apiURL= `https://tkframes-03dcbc1f1984.herokuapp.com`
 
 const SingleCharacter = ({ characters }) => {
   const params = useParams();

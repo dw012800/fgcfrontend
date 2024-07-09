@@ -10,7 +10,7 @@ import { Route, Routes } from 'react-router-dom'
 
 function App() {
   //our API URL
-  const apiURL = 'http://localhost:8000'
+  const apiURL= `https://tkframes-03dcbc1f1984.herokuapp.com`
   
   const [characters, setCharacters] = useState([]);
 
