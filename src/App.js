@@ -83,7 +83,7 @@ function App() {
   //useEffect
   useEffect(() => {
     getCharacters()
-  }, [])
+  }, [getCharacters])
 
   return (
     <div class="App">
