@@ -14,8 +14,8 @@ const Character = ({character, deleteCharacter}) => {
   }
   return (
 
-    <div className='mt-10 border-2 border-black w-28 h-30'>
-      <img className= 'w-26 h-29' src={character.image} alt={character.name} />
+    <div className='mt-10 border-2 border-black w-36 h-30'>
+      <img className= 'w-32 h-29' src={character.image} alt={character.name} />
       <Link to={`/characters/${character.id}`}>
         <h1 className="text-green-600 underline">{character.name}</h1>
       </Link>

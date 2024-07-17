@@ -15,9 +15,11 @@ const currentCharacter = useMemo(() => props.characters.find(character => charac
     props.formType === 'new' ? {
       name: '',
       details: '',
+      image: '',
     } : {
       name: currentCharacter.name, 
       details: currentCharacter.details, 
+      image: currentCharacter.image,
       id: parseInt(currentCharacter.id)
     }
   )
@@ -53,7 +55,15 @@ const currentCharacter = useMemo(() => props.characters.find(character => charac
         value={formData.details}
         name='details'
       />
+      <h3 className="mt-4">ImageURL</h3>
+      <input className="border-2 border-black h-20 w-3/4"
+        type='text'
+        onChange={handleChange}
+        value={formData.image}
+        name='image'
+      />
       <input className='w-35 mt-4 border-2 border-black'type='submit' value={props.buttonLabel} /> 
+
       <Link className='w-20 mt-4 border-2 border-black justify-center' to="/">
         <button>Go Back</button>
       </Link>
